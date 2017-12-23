@@ -9,15 +9,16 @@ namespace Biblioteca.ViewModel
 {
     public class LivroViewModel
     {   
-        public MyICommand DeleteCommand { get; set; }
+        //public MyICommand DeleteCommand { get; set; }
 
         public LivroViewModel()
         {
             LoadLivros();
-            DeleteCommand = new MyICommand(OnDelete, CanDelete);
+            //DeleteCommand = new MyICommand(OnDelete, CanDelete);
         }
 
         public ObservableCollection<Livro> Livros { get; set; }
+        
 
         public void LoadLivros()
         {
@@ -30,7 +31,7 @@ namespace Biblioteca.ViewModel
             Livros = livros;
             
         }
-
+        /*
         private Livro _selectedLivro;
 
         public Livro SelectedLivro
@@ -53,6 +54,6 @@ namespace Biblioteca.ViewModel
         {
             return SelectedLivro != null;
         }
-
+        */
     }
 }
