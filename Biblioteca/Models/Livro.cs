@@ -18,16 +18,16 @@ namespace Biblioteca.Models
         - Preço (em reais)
         - Críticas de leitores (uma ou mais)
         */
-        private string _ISBN;
+        private string _isbn;
         public string ISBN
         {
-            get { return _ISBN; }
+            get { return _isbn; }
 
             set
             {
-                if(_ISBN != value)
+                if(_isbn != value)
                 {
-                    _ISBN = value;
+                    _isbn = value;
                     RaisePropertyChanged();
                 }
             }
@@ -124,6 +124,18 @@ namespace Biblioteca.Models
                 }
             }
         }
+
+        
+
+        /*
+- ISBN (chave primária)
+- Título
+- Autores (um ou mais)
+- Editora
+- Data de publicação
+- Preço (em reais)
+- Críticas de leitores (uma ou mais)
+*/
 
     }
 }
