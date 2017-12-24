@@ -49,6 +49,9 @@ namespace Biblioteca.Controllers
         // DELETE: api/Livro/5
         public void Delete(int id)
         {
+            DeletarLivroViewModel _deletarLivro = new DeletarLivroViewModel();
+            _deletarLivro.Deletar(id);
+            
         }
     }
 }

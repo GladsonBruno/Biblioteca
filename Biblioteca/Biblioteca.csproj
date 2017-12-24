@@ -95,6 +95,7 @@
     <Compile Include="MyICommand.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModel\AtualizarLivroViewModel.cs" />
+    <Compile Include="ViewModel\DeletarLivroViewModel.cs" />
     <Compile Include="ViewModel\InserirLivroViewModel.cs" />
     <Compile Include="ViewModel\LivroViewModel.cs" />
   </ItemGroup>

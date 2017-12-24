@@ -20,16 +20,6 @@
     "Critica_de_Leitores": "Ótimo"
   },
   {
-    "Id": 3,
-    "ISBN": "978-85-7302-842-3",
-    "Titulo": "A Bússola de Ouro",
-    "Autores": "Philip Pullman",
-    "Editora": "Suma de Letras",
-    "Data_Publicacao": "03/08/2010",
-    "Preco": 29.9,
-    "Critica_de_Leitores": "Muito bom"
-  },
-  {
     "Id": 4,
     "ISBN": "978-8501109309",
     "Titulo": "Assassin's Creed",
