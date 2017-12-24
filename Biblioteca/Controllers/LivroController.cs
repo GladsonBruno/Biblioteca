@@ -32,12 +32,18 @@ namespace Biblioteca.Controllers
             InserirLivroViewModel _livro = new InserirLivroViewModel();
             _livro.Inserir(novoLivro);
 
+            _livro.ListarLivros();
             return _livro.Livros;
         }
 
         // PUT: api/Livro/5
-        public void Put(int id, [FromBody]string value)
+        public ObservableCollection<Livro> Put(int id, [FromBody]Livro livroAtualizado)
         {
+            AtualizarLivroViewModel _atualizarLivro = new AtualizarLivroViewModel();
+            _atualizarLivro.Atualizar(id, livroAtualizado);
+
+            _atualizarLivro.ListarLivros();
+            return _atualizarLivro.Livros;
         }
 
         // DELETE: api/Livro/5
