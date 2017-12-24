@@ -86,11 +86,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Controllers\ConversorController.cs" />
     <Compile Include="Controllers\LivroController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\CriticaIndividual.cs" />
     <Compile Include="Models\Livro.cs" />
     <Compile Include="Models\NotifyBase.cs" />
     <Compile Include="MyICommand.cs" />

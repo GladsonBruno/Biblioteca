@@ -126,8 +126,9 @@ namespace Biblioteca.Models
             }
         }
 
-        private string _critica_de_leitores;
-        public string Critica_de_Leitores
+
+        private List<CriticaIndividual> _critica_de_leitores;
+        public List<CriticaIndividual> Critica_de_Leitores
         {
             get { return _critica_de_leitores; }
 
