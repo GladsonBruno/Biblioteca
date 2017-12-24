@@ -21,9 +21,34 @@ namespace Biblioteca.Controllers
         }
 
         // GET: api/Livro/5
-        public string Get(int id)
+        public Livro Get(string parametro, string nomeParametro)
         {
-            return "value";
+            LivroViewModel livro = new LivroViewModel();
+            Livro livroSelecionado;
+            
+            //Pesquisa por isbn
+            if (nomeParametro == "ISBN")
+            {
+                livroSelecionado = livro.Livros.Where(p => p.ISBN == parametro).FirstOrDefault();
+                if (livroSelecionado == null)
+                {
+                    throw new Exception("Nenhum livro encontrado");
+                }
+            }
+            //Pesquisa pelo autor
+            else if(nomeParametro == "Autores")
+            {
+                livroSelecionado = livro.Livros.Where(p => p.Autores.Contains(parametro)).FirstOrDefault();
+                if(livroSelecionado == null)
+                {
+                    throw new Exception("Nenhum livro encontrado");
+                }
+            }
+            else
+            {
+                throw new Exception("Parâmetro inválido");
+            }
+            return livroSelecionado;
         }
 
         // POST: api/Livro
