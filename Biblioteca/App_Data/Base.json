@@ -14,7 +14,8 @@
       {
         "Comentario": "Muito Bom"
       }
-    ]
+    ],
+    "Image": "https://images.livrariasaraiva.com.br/imagemnet/imagem.aspx/?pro_id=198630&qld=90&l=430&a=-1"
   },
   {
     "Id": 2,
@@ -31,7 +32,26 @@
       {
         "Comentario": "Muito Bom"
       }
-    ]
+    ],
+    "Image": "https://images.livrariasaraiva.com.br/imagemnet/imagem.aspx/?pro_id=3418878&qld=90&l=430&a=-1"
+  },
+  {
+    "Id": 3,
+    "ISBN": "99469391",
+    "Titulo": "O Vendedor de Armas",
+    "Autores": "Hugh Laurie",
+    "Editora": "Planeta",
+    "Data_Publicacao": "01/05/2006",
+    "Preco": 49.9,
+    "Critica_de_Leitores": [
+      {
+        "Comentario": "Ótimo"
+      },
+      {
+        "Comentario": "Muito Bom"
+      }
+    ],
+    "Image": "https://images.livrariasaraiva.com.br/imagemnet/imagem.aspx/?pro_id=7340626&qld=90&l=430&a=-1"
   },
   {
     "Id": 4,
@@ -48,6 +68,25 @@
       {
         "Comentario": "Muito Bom"
       }
-    ]
+    ],
+    "Image": "https://images.livrariasaraiva.com.br/imagemnet/imagem.aspx/?pro_id=9395393&qld=90&l=430&a=-1"
+  },
+  {
+    "Id": 5,
+    "ISBN": "9788551001462",
+    "Titulo": "Olhos Prateados - Five Nights At Freddys",
+    "Autores": "Christie Golden, Kira Breed Wrisley",
+    "Editora": "Ubisoft",
+    "Data_Publicacao": "21/12/2016",
+    "Preco": 39.9,
+    "Critica_de_Leitores": [
+      {
+        "Comentario": "Ótimo"
+      },
+      {
+        "Comentario": "Muito Bom"
+      }
+    ],
+    "Image": "https://images.livrariasaraiva.com.br/imagemnet/imagem.aspx/?pro_id=9420778&qld=90&l=430&a=-1"
   }
 ] 

@@ -121,7 +121,7 @@ namespace Biblioteca.Models
                 if(_preco_extenso != value)
                 {
                     _preco_extenso = value;
-                    RaisePropertyChanged("Preco_Extenso");
+                    RaisePropertyChanged();
                 }
             }
         }
@@ -137,6 +137,21 @@ namespace Biblioteca.Models
                 if(_critica_de_leitores != value)
                 {
                     _critica_de_leitores = value;
+                    RaisePropertyChanged();
+                }
+            }
+        }
+
+        private string _image;
+        public string Image
+        {
+            get { return _image; }
+
+            set
+            {
+                if(_image != value)
+                {
+                    _image = value;
                     RaisePropertyChanged();
                 }
             }

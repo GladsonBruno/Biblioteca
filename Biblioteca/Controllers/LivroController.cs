@@ -7,9 +7,11 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Cors;
 
 namespace Biblioteca.Controllers
 {
+    [EnableCors("*", "*", "*")]
     public class LivroController : ApiController
     {
         // GET: Livro
@@ -26,6 +28,7 @@ namespace Biblioteca.Controllers
             LivroViewModel livro = new LivroViewModel();
             Livro livroSelecionado;
             
+
             //Pesquisa por isbn
             if (nomeParametro == "ISBN")
             {
@@ -38,8 +41,11 @@ namespace Biblioteca.Controllers
             //Pesquisa pelo autor
             else if(nomeParametro == "Autores")
             {
+
                 livroSelecionado = livro.Livros.Where(p => p.Autores.Contains(parametro)).FirstOrDefault();
-                if(livroSelecionado == null)
+                
+                
+                if (livroSelecionado == null)
                 {
                     throw new Exception("Nenhum livro encontrado");
                 }
