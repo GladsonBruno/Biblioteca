@@ -18,6 +18,8 @@ namespace Biblioteca.Models
         - Preço (em reais)
         - Críticas de leitores (uma ou mais)
         */
+        public int Id { get; set; }
+
         private string _isbn;
         public string ISBN
         {

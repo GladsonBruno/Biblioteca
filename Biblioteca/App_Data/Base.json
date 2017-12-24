@@ -1,0 +1,42 @@
+[
+  {
+    "Id": 1,
+    "ISBN": "978-8535907728",
+    "Titulo": "Coração de Tinta",
+    "Autores": "Conelia Funke",
+    "Editora": "Cia das Letras",
+    "Data_Publicacao": "01/01/2006",
+    "Preco": 29.9,
+    "Critica_de_Leitores": "Ótimo"
+  },
+  {
+    "Id": 2,
+    "ISBN": "978-006-19-6955-3",
+    "Titulo": "Eu sou o número 4",
+    "Autores": "Pittacus Lore",
+    "Editora": "HarperCollins",
+    "Data_Publicacao": "03/08/2010",
+    "Preco": 29.9,
+    "Critica_de_Leitores": "Ótimo"
+  },
+  {
+    "Id": 3,
+    "ISBN": "978-85-7302-842-3",
+    "Titulo": "A Bússola de Ouro",
+    "Autores": "Philip Pullman",
+    "Editora": "Suma de Letras",
+    "Data_Publicacao": "03/08/2010",
+    "Preco": 29.9,
+    "Critica_de_Leitores": "Ótimo"
+  },
+  {
+    "Id": 4,
+    "ISBN": "978-8501109309",
+    "Titulo": "Assassin's Creed",
+    "Autores": "Christie Golden",
+    "Editora": "Ubisoft",
+    "Data_Publicacao": "21/12/2016",
+    "Preco": 39.9,
+    "Critica_de_Leitores": "Ótimo"
+  }
+]

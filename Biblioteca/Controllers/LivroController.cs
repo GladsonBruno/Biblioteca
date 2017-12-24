@@ -27,8 +27,12 @@ namespace Biblioteca.Controllers
         }
 
         // POST: api/Livro
-        public void Post([FromBody]string value)
+        public ObservableCollection<Livro> Post(Livro novoLivro)
         {
+            InserirLivroViewModel _livro = new InserirLivroViewModel();
+            _livro.Inserir(novoLivro);
+
+            return _livro.Livros;
         }
 
         // PUT: api/Livro/5
