@@ -38,6 +38,11 @@ namespace Biblioteca.ViewModel
 
             var listaLivros = JsonConvert.DeserializeObject<ObservableCollection<Livro>>(Json);
 
+            for (int i = 0; i < listaLivros.Count(); i++)
+            {
+                listaLivros[i].Preco_Extenso = ConversorViewModel.EscreverExtenso(listaLivros[i].Preco);
+            }
+
             Livros = listaLivros;
             
         }

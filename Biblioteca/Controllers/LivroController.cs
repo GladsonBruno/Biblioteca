@@ -12,7 +12,7 @@ namespace Biblioteca.Controllers
 {
     public class LivroController : ApiController
     {
-        // GET: api/Livro
+        // GET: Livro
         public ObservableCollection<Livro> Get()
         {
             LivroViewModel livros = new LivroViewModel();
@@ -20,7 +20,7 @@ namespace Biblioteca.Controllers
 
         }
 
-        // GET: api/Livro/5
+        // GET: Livro?parametro=valor&nomeParametro=nome_do_parametro
         public Livro Get(string parametro, string nomeParametro)
         {
             LivroViewModel livro = new LivroViewModel();
@@ -51,7 +51,7 @@ namespace Biblioteca.Controllers
             return livroSelecionado;
         }
 
-        // POST: api/Livro
+        // POST: Livro
         public ObservableCollection<Livro> Post(Livro novoLivro)
         {
             InserirLivroViewModel _livro = new InserirLivroViewModel();
@@ -61,7 +61,7 @@ namespace Biblioteca.Controllers
             return _livro.Livros;
         }
 
-        // PUT: api/Livro/5
+        // PUT: Livro/5
         public ObservableCollection<Livro> Put(int id, [FromBody]Livro livroAtualizado)
         {
             AtualizarLivroViewModel _atualizarLivro = new AtualizarLivroViewModel();
@@ -71,7 +71,7 @@ namespace Biblioteca.Controllers
             return _atualizarLivro.Livros;
         }
 
-        // DELETE: api/Livro/5
+        // DELETE: Livro/5
         public void Delete(int id)
         {
             DeletarLivroViewModel _deletarLivro = new DeletarLivroViewModel();

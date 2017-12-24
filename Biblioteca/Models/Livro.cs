@@ -96,8 +96,8 @@ namespace Biblioteca.Models
             }
         }
 
-        private double _preco;
-        public double Preco
+        private decimal _preco;
+        public decimal Preco
         {
             get { return _preco; }
 
@@ -111,6 +111,20 @@ namespace Biblioteca.Models
             }
         }
 
+        private string _preco_extenso;
+        public string Preco_Extenso
+        {
+            get { return _preco_extenso; }
+
+            set
+            {
+                if(_preco_extenso != value)
+                {
+                    _preco_extenso = value;
+                    RaisePropertyChanged("Preco_Extenso");
+                }
+            }
+        }
 
         private string _critica_de_leitores;
         public string Critica_de_Leitores
