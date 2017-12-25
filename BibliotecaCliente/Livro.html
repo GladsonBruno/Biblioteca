@@ -5,45 +5,85 @@
     <link rel="stylesheet" type="text/css" href="Content/bootstrap.min.css" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <script src="/scripts/jquery.min.js"></script>
+    <script src="scripts/bootstrap.min.js"></script>
     <title class="titulo"></title>
 </head>
 <body>
     <div class="container">
-    <div class="card">
-        <h3 class="card-header"></h3>
-        <div class="card-block">
-            <div class="col-md-4" style="float: right;">
-                <h4 class="card-title">Critica Leitores</h4>
-                <p class="card-text" id="criticas"></p>
+        <div class="card">
+            <h3 class="card-header"></h3>
+            <div class="card-block">
+                <div class="col-md-4" style="float: right;">
+                    <h4 class="card-title">Critica Leitores</h4>
+                    <p class="card-text" id="criticas"></p>
 
+                </div>
+
+                <div class="col-md-4" style="float: right">
+                    <h4 class="card-title">Autores</h4>
+                    <p class="card-text" id="autores"></p>
+                    <h4 class="card-title">Editora</h4>
+                    <p class="card-text" id="editora"></p>
+                    <h4 class="card-title">Data Publicação</h4>
+                    <p class="card-text" id="data_publicacao"></p>
+                    <h4 class="card-title">Preço</h4>
+                    <p class="card-text" id="preco"></p>
+                </div>
+
+
+                <div class="imagem col-4"></div>
+
+                </br>
+                <a href="Editar.html" class="btn btn-primary">Editar</a>
+                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalDeletar">Deletar</button>
+                <p></p>
             </div>
-
-            <div class="col-md-4" style="float: right">
-                <h4 class="card-title">Autores</h4>
-                <p class="card-text" id="autores"></p>
-                <h4 class="card-title">Editora</h4>
-                <p class="card-text" id="editora"></p>
-                <h4 class="card-title">Data Publicação</h4>
-                <p class="card-text" id="data_publicacao"></p>
-                <h4 class="card-title">Preço</h4>
-                <p class="card-text" id="preco"></p>
-            </div>
-
-
-            <div class="imagem col-4"></div>
-
-            </br>
-            <a href="Editar.html" class="btn btn-primary">Editar</a>
-            <a href="#" onclick="deletar()" class="btn btn-danger">Deletar</a>
-            <p></p>
         </div>
     </div>
+
+    <!-- Inicio Modal Deletar -->
+
+    <div id="modalDeletar" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <!-- Conteudo Modal -->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Tem certeza que deseja deletar o livro <span class="tituloLivroDelete"></span> ?</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Voltar</button>
+                    <button type="button" class="btn btn-danger" onclick="deletar()">Deletar</button>
+                </div>
+            </div>
+        </div>
     </div>
 
+
+    <!-- Fim Modal Deletar -->
+    <!-- Início modal deleção confirmada -->
+    <div id="modalLivroDeletado" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <!-- Conteudo Modal -->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Livro <span class="tituloLivroDelete"></span></br> deletado com sucesso!</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success btn-block" data-toggle="modal" data-target="#modalLivroDeletado" onclick="window.location.assign('Index.html')">Voltar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Fim modal deleção confirmada -->
+    
     <script>
+        var livro = JSON.parse(localStorage.getItem("Livro"));
 
         function carregarDados() {
-            var livro = JSON.parse(localStorage.getItem("Livro"));
+
             $('.titulo').append(livro.Titulo);
             $(".card-header").append("<a href='index.html'><span class='glyphicon glyphicon-circle-arrow-left'></span></a>    " + livro.Titulo);
             $(".imagem").append("<img class='card-img-top' src='" + livro.Image + "' alt='Card image' style='width:250px; height:auto'>")
@@ -65,12 +105,27 @@
         }
 
         function deletar() {
-            var livro = JSON.parse(localStorage.getItem("Livro"));
-            alert("Deseja deletar o livro " + livro.Titulo + " ?");
+
+            var requisicao = new XMLHttpRequest();
+            requisicao.open("DELETE", "http://localhost:55219/livro/" + livro.Id, true);
+            requisicao.onreadystatechange = function () {
+                if ((this.readyState == 4 || this.readyState == 2) && (this.status == 200 || this.status == 204)) {
+                    $('#modalDeletar').modal('hide');
+                    $('#modalLivroDeletado').modal('show');
+                } else {
+                    alert("Falha ao deletar o livro " + livro.Titulo + " !");
+                }
+            }
+            requisicao.send();
+            
+        }
+
+        function carregarDadosModal() {
+            $(".tituloLivroDelete").append("</br>" + livro.Titulo + " ");
         }
 
         carregarDados();
-        
+        carregarDadosModal();
     </script>
 </body>
 </html>
