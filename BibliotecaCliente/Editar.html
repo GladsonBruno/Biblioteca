@@ -13,51 +13,129 @@
         <div class="card">
             <h3 class="card-header"></h3>
             <div class="card-block">
-                <div class="col-md-4" style="float: right;">
-                    <h4 class="card-title">Critica Leitores</h4>
-                    <p class="card-text" id="criticas"></p>
-
-                </div>
-
-                <div class="col-md-4" style="float: right">
+                <div class="col-md-6" style="float: right">
+                    <h4 class="card-title">ISBN</h4>
+                    <input class="card-text" id="isbn" />
+                    <h4 class="card-title">Titulo</h4>
+                    <input class="card-text" id="tituloLivro" />
                     <h4 class="card-title">Autores</h4>
-                    <p class="card-text" id="autores"></p>
+                    <input class="card-text" id="autores" />
                     <h4 class="card-title">Editora</h4>
-                    <p class="card-text" id="editora"></p>
+                    <input class="card-text" id="editora" />
                     <h4 class="card-title">Data Publicação</h4>
-                    <p class="card-text" id="data_publicacao"></p>
+                    <input class="card-text" id="data_publicacao" />
                     <h4 class="card-title">Preço</h4>
-                    <p class="card-text" id="preco"></p>
+                    <input class="card-text" id="preco" />
+                    <p><p />
+                    <button class="btn btn-success" data-toggle="modal" data-target="#modalConfirmacao">Salvar</button>
                 </div>
 
 
-                <div class="imagem col-4"></div>
+                <div class="imagem col-md-6"></div>
 
-                </br>
-                <a href="Editar.html" class="btn btn-primary">Editar</a>
-                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalDeletar">Deletar</button>
                 <p></p>
+
             </div>
         </div>
     </div>
 
+    <!-- Início modal de confirmação -->
+    <div id="modalConfirmacao" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <!-- Conteudo Modal -->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title"></h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" data-toggle="modal" onclick="salvarAlteracoes()">Sim</button>
+                    <button type="button" class="btn btn-info" data-toggle="modal" data-dismiss="modal">Não</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Fim modal de confirmação -->
+
+    <!-- Início modal atualização concluida -->
+    <div id="modalAtualizacaoConcluida" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <!-- Conteudo Modal -->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 id="livroAtualizado"></h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success btn-block" data-toggle="modal" data-target="#modalLivroDeletado" onclick="window.location.assign('Index.html')">Voltar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Fim modal atualização concluida -->
     <script>
         var livro = JSON.parse(localStorage.getItem("Livro"));
 
         function carregarDados() {
 
             $('.titulo').append(livro.Titulo);
-            $(".card-header").append("<a href='index.html'><span class='glyphicon glyphicon-circle-arrow-left'></span></a>    " + livro.Titulo);
-            $(".imagem").append("<img class='card-img-top' src='" + livro.Image + "' alt='Card image' style='width:250px; height:auto'>")
-            $("#autores").append(livro.Autores);
-            $("#editora").append(livro.Editora);
-            $("#data_publicacao").append(livro.Data_Publicacao);
-            $("#preco").append(livro.Preco_Extenso);
-            
+            $(".card-header").append("<a href='livro.html'><span class='glyphicon glyphicon-circle-arrow-left'></span></a>    " + livro.Titulo);
+            $(".imagem").append("<img class='card-img-top' src='" + livro.Image + "' alt='Card image' style='width:250px; height:auto'>");
+            $("#isbn").val(livro.ISBN);
+            $("#tituloLivro").val(livro.Titulo);
+            $("#autores").val(livro.Autores);
+            $("#editora").val(livro.Editora);
+            $("#data_publicacao").val(livro.Data_Publicacao);
+            $("#preco").val(livro.Preco);
         }
 
+        function carregarDadosModal() {
+            $(".modal-title").append("Deseja Salvar as alterações?");
+        }
+
+        function salvarAlteracoes() {
+            var isbn = $("#isbn").val();
+            var titulo = $("#tituloLivro").val();
+            var autores = $("#autores").val();
+            var editora = $("#editora").val();
+            var data_publicacao = $("#data_publicacao").val();
+            var preco = $("#preco").val();
+
+            var modificacoesLivro = {
+                "Id": livro.Id,
+                "ISBN": isbn,
+                "Titulo": titulo,
+                "Autores": autores,
+                "Editora": editora,
+                "Data_Publicacao": data_publicacao,
+                "Preco": preco,
+                "Critica_de_Leitores": livro.Critica_de_Leitores,
+                "Image": livro.Image
+            };
+
+            var requisicao = new XMLHttpRequest();
+            requisicao.open("PUT", "http://localhost:55219/livro/" + livro.Id, true);
+            requisicao.setRequestHeader("content-type", "application/json");
+            requisicao.onreadystatechange = function () {
+                if (this.status == 200) {
+                    $('#modalConfirmacao').modal('hide');
+                    $('#modalAtualizacaoConcluida').modal('show');
+                } else {
+                    alert("Falha ao atualizar o livro " + livro.Titulo + " !");
+                    alert(this.status);
+                    alert(this.readyState);
+                }
+                
+            }
+            $('#livroAtualizado').append("Livro <br/>" + titulo + "</br> Atualizado com sucesso!");
+            requisicao.send(JSON.stringify(modificacoesLivro));
+        }
         
+
         carregarDados();
+        carregarDadosModal();
     </script>
 </body>
 </html>

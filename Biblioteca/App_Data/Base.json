@@ -6,8 +6,8 @@
     "Autores": "Cornelia Funke",
     "Editora": "Cia das Letras",
     "Data_Publicacao": "01/01/2006",
-    "Preco": 29.9,
-    "Preco_Extenso": "VINTE E NOVE REAIS E NOVENTA CENTAVOS",
+    "Preco": 39.49,
+    "Preco_Extenso": null,
     "Critica_de_Leitores": [
       {
         "Comentario": "Ótimo"
@@ -83,6 +83,7 @@
     "Editora": "Intrinseca",
     "Data_Publicacao": "21/12/2016",
     "Preco": 39.9,
+    "Preco_Extenso": "TRINTA E NOVE REAIS E NOVENTA CENTAVOS",
     "Critica_de_Leitores": [
       {
         "Comentario": "Ótimo"
