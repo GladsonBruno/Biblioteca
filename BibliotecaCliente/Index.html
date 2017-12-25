@@ -5,11 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="utf-8">
     <link rel="stylesheet" type="text/css" href="Content/bootstrap.min.css" />
     <script src="/scripts/jquery.min.js"></script>
-    <title></title>
+    <title>Home</title>
 </head>
 <body>
     <div class="container">
-        <div class="jumbotron">Teste</div>
+        <p></p>
+        <h1 class="alert alert-info">Biblioteca</h1>
 
         <!--
     <table>
@@ -49,12 +50,12 @@
                 }
                 */
                 elementos += "<div class='col-md-3 col-sm-4 col-6' style='float: left'>";
-                elementos += "<div class='card' style= 'width:200px' >";
+                elementos += "<div class='card' style= 'width:200px; height:auto' >";
                 elementos += "<img class='card-img-top' src='" + resposta[item].Image + "' alt='Card image'>";
                 elementos += "<div class='card-body col-md-12'>";
                 elementos += "<h4 class='card-title'>" + resposta[item].Titulo + "</h4>";
                 elementos += "<p class='card-text'>" + resposta[item].Autores + "</p>";
-                elementos += "<button class='btn btn-primary' onclick='pegarLivro(" + JSON.stringify(elementoAtual) + ")' > Ver Livro</button> ";
+                elementos += "<button class='btn btn-primary' onclick='pegarLivro(" + JSON.stringify(elementoAtual) + ")' style='cursor: pointer'> Ver Livro</button> ";
                 elementos += "</div>";
                 elementos += "</div>";
                 elementos += "</div>";
@@ -70,6 +71,9 @@
 
         function pegarLivro(livro) {
             localStorage.setItem("Livro", JSON.stringify(livro));
+            console.log(localStorage.getItem("Livro"));
+
+            window.location.assign("Livro.html");
         }
     </script>
 
