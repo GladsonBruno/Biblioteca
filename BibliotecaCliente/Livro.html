@@ -49,13 +49,13 @@
 
                 <div class="col-md-4">
                     <h4 class="card-title">Autores</h4>
-                    <p class="card-text" id="autores"></p>
+                    <p class="card-text"><span  id="autores"></span></p>
                     <h4 class="card-title">Editora</h4>
-                    <p class="card-text" id="editora"></p>
+                    <p class="card-text"><span  id="editora"></span></p>
                     <h4 class="card-title">Data Publicação</h4>
-                    <p class="card-text" id="data_publicacao"></p>
+                    <p class="card-text"><span id="data_publicacao"></span></p>
                     <h4 class="card-title">Preço</h4>
-                    <p class="card-text" id="preco"></p>
+                    <p class="card-text"><span  id="preco"></span></p>
                 </div>
 
 
@@ -139,7 +139,7 @@
             $("#editora").append(livro.Editora);
             $("#data_publicacao").append(livro.Data_Publicacao);
             $("#preco").append(livro.Preco_Extenso);
-
+            console.log(livro);
             var comentarios = "";
 
             for (var item in livro.Critica_de_Leitores) {
@@ -161,7 +161,7 @@
             var autores = $("#autores").val();
             var editora = $("#editora").val();
             var data_publicacao = $("#data_publicacao").val();
-            var preco = $("#preco").val();
+            var preco = $("#preco").html();
             var comentario = $("#comentario").val();
 
             if (NovoComentario != "") {
@@ -178,6 +178,7 @@
                     "Editora": livro.Editora,
                     "Data_Publicacao": livro.Data_Publicacao,
                     "Preco": livro.Preco,
+                    "Preco_Extenso": livro.Preco_Extenso,
                     "Critica_de_Leitores": livro.Critica_de_Leitores,
                     "Image": livro.Image
                 };
@@ -234,6 +235,7 @@
                     "Editora": livro.Editora,
                     "Data_Publicacao": livro.Data_Publicacao,
                     "Preco": livro.Preco,
+                    "Preco_Extenso": livro.Preco_Extenso,
                     "Critica_de_Leitores": livro.Critica_de_Leitores,
                     "Image": livro.Image
                 };

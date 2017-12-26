@@ -58,6 +58,9 @@
       },
       {
         "Comentario": "Perfeito"
+      },
+      {
+        "Comentario": "teste"
       }
     ],
     "Image": "https://images.livrariasaraiva.com.br/imagemnet/imagem.aspx/?pro_id=7340626&qld=90&l=430&a=-1"
@@ -115,6 +118,9 @@
     "Critica_de_Leitores": [
       {
         "Comentario": "Amo esse mundo mágico da mestra JK Rowling"
+      },
+      {
+        "Comentario": "E nois que voa bruxão"
       }
     ],
     "Image": "https://images.livrariasaraiva.com.br/imagemnet/imagem.aspx/?pro_id=443852&qld=90&l=430&a=-1"
@@ -196,7 +202,7 @@
     "Editora": "JBC",
     "Data_Publicacao": "29/11/2016",
     "Preco": 35.49,
-    "Preco_Extenso": null,
+    "Preco_Extenso": "TRINTA E CINCO REAIS E QUARENTA E NOVE CENTAVOS",
     "Critica_de_Leitores": [],
     "Image": "https://images.livrariasaraiva.com.br/imagemnet/imagem.aspx/?pro_id=9401659&qld=90&l=430&a=-1"
   }
