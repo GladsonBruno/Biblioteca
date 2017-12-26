@@ -1,6 +1,12 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Biblioteca.ViewModel;
+using Biblioteca.Controllers;
+using System.Net.Http;
+using System.Web.Http;
+using System.Web.Http.Results;
+using System.Collections.ObjectModel;
+using Biblioteca.Models;
 
 namespace Teste_Biblioteca
 {
@@ -48,6 +54,7 @@ namespace Teste_Biblioteca
 
             Assert.AreEqual(this.resultadoTeste, resultadoEsperado);
         }
+
 
     }
 }

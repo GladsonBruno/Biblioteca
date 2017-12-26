@@ -157,15 +157,7 @@ namespace Biblioteca.Models
             }
         }
 
-        public Livro(string isbn, string titulo, string autores, string editora, string data_publicacao, double preco)
-        {
-            ISBN = isbn;
-            Titulo = titulo;
-            Autores = autores;
-            Editora = editora;
-            Data_Publicacao = data_publicacao;
-            Preco = preco;
-        }
+        
 
         /*
 - ISBN (chave primária)

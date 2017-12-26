@@ -5,7 +5,7 @@
     "Titulo": "Coração de Tinta",
     "Autores": "Cornelia Funke",
     "Editora": "Cia das Letras",
-    "Data_Publicacao": "01/01/2006",
+    "Data_Publicacao": "10/02/2006",
     "Preco": 39.49,
     "Preco_Extenso": "TRINTA E NOVE REAIS E QUARENTA E NOVE CENTAVOS",
     "Critica_de_Leitores": [
@@ -24,7 +24,7 @@
     "Titulo": "Eu sou o número 4",
     "Autores": "Pittacus Lore",
     "Editora": "HarperCollins",
-    "Data_Publicacao": "",
+    "Data_Publicacao": "14/05/2011",
     "Preco": 29.9,
     "Preco_Extenso": "VINTE E NOVE REAIS E NOVENTA CENTAVOS",
     "Critica_de_Leitores": [
@@ -46,9 +46,9 @@
     "Titulo": "O Vendedor de Armas",
     "Autores": "Hugh Laurie",
     "Editora": "Planeta",
-    "Data_Publicacao": "",
-    "Preco": 49.9,
-    "Preco_Extenso": "QUARENTA E NOVE REAIS E NOVENTA CENTAVOS",
+    "Data_Publicacao": "01/05/2014",
+    "Preco": 49.5,
+    "Preco_Extenso": "QUARENTA E NOVE REAIS E CINQUENTA CENTAVOS",
     "Critica_de_Leitores": [
       {
         "Comentario": "Ótimo"
@@ -87,7 +87,7 @@
     "Titulo": "Olhos Prateados - Five Nights At Freddys",
     "Autores": "Scott Cawthon, Kira Breed Wrisley",
     "Editora": "Intrinseca",
-    "Data_Publicacao": "",
+    "Data_Publicacao": "07/05/2017",
     "Preco": 39.9,
     "Preco_Extenso": "TRINTA E NOVE REAIS E NOVENTA CENTAVOS",
     "Critica_de_Leitores": [
@@ -109,7 +109,7 @@
     "Titulo": "Harry Potter e A Pedra Filosofal",
     "Autores": "JK Rowling",
     "Editora": "Rocco",
-    "Data_Publicacao": "21/10/1996",
+    "Data_Publicacao": "01/01/2000",
     "Preco": 24.9,
     "Preco_Extenso": "VINTE E QUATRO REAIS E NOVENTA CENTAVOS",
     "Critica_de_Leitores": [
@@ -141,9 +141,9 @@
     "Titulo": "Thanos Final Infinito",
     "Autores": "Andy Smith - Jim Starlin - Ron Lim",
     "Editora": "Panini",
-    "Data_Publicacao": "21/12/2017",
+    "Data_Publicacao": "21/11/2017",
     "Preco": 20.2,
-    "Preco_Extenso": null,
+    "Preco_Extenso": "VINTE REAIS E VINTE CENTAVOS",
     "Critica_de_Leitores": [
       {
         "Comentario": "Mesmo"
@@ -163,7 +163,7 @@
     "Titulo": "A Ultima Música",
     "Autores": "Nicholas Sparks",
     "Editora": "Novo Conceito",
-    "Data_Publicacao": "01/01/2010",
+    "Data_Publicacao": "01/06/2010",
     "Preco": 19.9,
     "Preco_Extenso": "DEZENOVE REAIS E NOVENTA CENTAVOS",
     "Critica_de_Leitores": [],
@@ -181,8 +181,23 @@
     "Critica_de_Leitores": [
       {
         "Comentario": "Lindo, qualidade impecável"
+      },
+      {
+        "Comentario": "Editora nova no mercado e com uma qualidade que serve de exemplo pras veteranas."
       }
     ],
     "Image": "https://images-na.ssl-images-amazon.com/images/I/81DM-YF4vgL.jpg"
+  },
+  {
+    "Id": 11,
+    "ISBN": "9788545702320",
+    "Titulo": "The Ghost In the Shell",
+    "Autores": "Shirow Massamune",
+    "Editora": "JBC",
+    "Data_Publicacao": "29/11/2016",
+    "Preco": 35.49,
+    "Preco_Extenso": null,
+    "Critica_de_Leitores": [],
+    "Image": "https://images.livrariasaraiva.com.br/imagemnet/imagem.aspx/?pro_id=9401659&qld=90&l=430&a=-1"
   }
 ]
