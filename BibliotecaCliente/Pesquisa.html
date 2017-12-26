@@ -38,7 +38,7 @@
 
     <div class="container">
         <p></p>
-        <h1 class="alert alert-info">Biblioteca</h1>
+        <h1 class="alert alert-info" id="string_pesquisa"></h1>
 
         <div class="content"></div>
     </div>
@@ -47,6 +47,7 @@
 
         function carregarPesquisa() {
             var pesquisa = JSON.parse(localStorage.getItem("Pesquisa"));
+            $("#string_pesquisa").append("Resultado da Pesquisa: " + localStorage.getItem("Texto_Pesquisa"));
 
             if (pesquisa.length > 0) {
                 var elementos = "";
@@ -77,13 +78,15 @@
 
         function pegarLivro(livro) {
             localStorage.setItem("Livro", JSON.stringify(livro));
-            console.log(localStorage.getItem("Livro"));
 
             window.location.assign("Livro.html");
         }
 
         function pesquisar() {
             var texto = $("#texto_pesquisa").val();
+
+            localStorage.setItem("Texto_Pesquisa", texto);
+
             texto = texto.replace(" ", "%20");
             var opcao_pesquisa = $("#opcao_pesquisa").val();
 

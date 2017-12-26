@@ -1,0 +1,1 @@
+﻿#error Generation error: Não foi possível carregar arquivo ou assembly 'Microsoft.Build.Framework, Version=15.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a' ou uma de suas dependências. O sistema não pode encontrar o arquivo especificado.

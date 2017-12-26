@@ -281,6 +281,9 @@
 
         function pesquisar() {
             var texto = $("#texto_pesquisa").val();
+
+            localStorage.setItem("Texto_Pesquisa", texto);
+
             texto = texto.replace(" ", "%20");
             var opcao_pesquisa = $("#opcao_pesquisa").val();
 
@@ -295,7 +298,7 @@
                         window.location.assign("Pesquisa.html");
                     } else {
                         localStorage.setItem("Pesquisa", JSON.stringify([]));
-                        window.location.reload();
+                        window.location.assign("Pesquisa.html");
                     }
                 }
                 requisicao.send();

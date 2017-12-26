@@ -85,9 +85,9 @@
     "Id": 5,
     "ISBN": "9788551001462",
     "Titulo": "Olhos Prateados - Five Nights At Freddys",
-    "Autores": "Christie Golden, Kira Breed Wrisley",
+    "Autores": "Scott Cawthon, Kira Breed Wrisley",
     "Editora": "Intrinseca",
-    "Data_Publicacao": "21/12/2016",
+    "Data_Publicacao": "",
     "Preco": 39.9,
     "Preco_Extenso": "TRINTA E NOVE REAIS E NOVENTA CENTAVOS",
     "Critica_de_Leitores": [
@@ -96,6 +96,9 @@
       },
       {
         "Comentario": "Muito Bom"
+      },
+      {
+        "Comentario": "FNAF é muito bom"
       }
     ],
     "Image": "https://images.livrariasaraiva.com.br/imagemnet/imagem.aspx/?pro_id=9420778&qld=90&l=430&a=-1"
@@ -127,7 +130,7 @@
     "Preco_Extenso": "TRINTA E QUATRO REAIS E NOVENTA CENTAVOS",
     "Critica_de_Leitores": [
       {
-        "Comentario": "teste"
+        "Comentario": "Bom, mas os capitulos são enormes.\nDa preguiça de ler"
       }
     ],
     "Image": "https://images.livrariasaraiva.com.br/imagemnet/imagem.aspx/?pro_id=1914939&qld=90&l=430&a=-1"
@@ -140,13 +143,16 @@
     "Editora": "Panini",
     "Data_Publicacao": "21/12/2017",
     "Preco": 20.2,
-    "Preco_Extenso": "VINTE REAIS E VINTE CENTAVOS",
+    "Preco_Extenso": null,
     "Critica_de_Leitores": [
       {
         "Comentario": "Mesmo"
       },
       {
         "Comentario": "Thanos"
+      },
+      {
+        "Comentario": "Épico"
       }
     ],
     "Image": "https://images.livrariasaraiva.com.br/imagemnet/imagem.aspx/?pro_id=9915998&qld=90&l=430&a=-1"
@@ -159,8 +165,24 @@
     "Editora": "Novo Conceito",
     "Data_Publicacao": "01/01/2010",
     "Preco": 19.9,
-    "Preco_Extenso": null,
+    "Preco_Extenso": "DEZENOVE REAIS E NOVENTA CENTAVOS",
     "Critica_de_Leitores": [],
     "Image": "https://images.livrariasaraiva.com.br/imagemnet/imagem.aspx/?pro_id=3043846&qld=90&l=430&a=-1"
+  },
+  {
+    "Id": 10,
+    "ISBN": "8575326597",
+    "Titulo": "The ancient magus bride (Volume 1)",
+    "Autores": "Kore Yamazaki",
+    "Editora": "Devir Livraria",
+    "Data_Publicacao": "08/12/2017",
+    "Preco": 24.49,
+    "Preco_Extenso": "VINTE E QUATRO REAIS E QUARENTA E NOVE CENTAVOS",
+    "Critica_de_Leitores": [
+      {
+        "Comentario": "Lindo, qualidade impecável"
+      }
+    ],
+    "Image": "https://images-na.ssl-images-amazon.com/images/I/81DM-YF4vgL.jpg"
   }
 ]

@@ -60,13 +60,13 @@
                     elementos += "<td>" + elementoAtual.Critica_de_Leitores[comentario].Comentario + "</td>";
                 }
                 */
-                elementos += "<div class='col-md-3 col-sm-4 col-6' style='float: left'>";
-                elementos += "<div class='card' style= 'width:100%; height:auto' >";
-                elementos += "<img class='card-img-top' src='" + resposta[item].Image + "' alt='Card image'>";
+                elementos += "<div class='col-md-3 col-sm-4 col-6' style='float: left; height: 530px;'>";
+                elementos += "<div class='card' >";
+                elementos += "<img class='card-img-top' src='" + resposta[item].Image + "' alt='Card image' style='width: auto, height: 500px'>";
                 elementos += "<div class='card-body col-md-12'>";
                 elementos += "<h4 class='card-title'>" + resposta[item].Titulo + "</h4>";
                 elementos += "<p class='card-text'>" + resposta[item].Autores + "</p>";
-                elementos += "<button class='btn btn-primary' onclick='pegarLivro(" + JSON.stringify(elementoAtual) + ")' style='cursor: pointer'> Ver Livro</button> ";
+                elementos += "<button class='btn btn-primary' onclick='pegarLivro(" + JSON.stringify(elementoAtual) + ")' style='cursor: pointer;'> Ver Livro</button> ";
                 elementos += "</div>";
                 elementos += "</div>";
                 elementos += "</div>";
@@ -89,10 +89,13 @@
 
         function pesquisar() {
             var texto = $("#texto_pesquisa").val();
+
+            localStorage.setItem("Texto_Pesquisa", texto);
+
             texto = texto.replace(" ", "%20");
             var opcao_pesquisa = $("#opcao_pesquisa").val();
 
-            if (texto != "" || texto == null) {
+            if (texto != "" || texto != null) {
                 var requisicao = new XMLHttpRequest();
                 requisicao.open("GET", "http://localhost:55219/livro?parametro=" + texto + "&nomeParametro=" + opcao_pesquisa, true);
                 requisicao.setRequestHeader("content-type", "application/json");
@@ -103,7 +106,7 @@
                         window.location.assign("Pesquisa.html");
                     } else {
                         localStorage.setItem("Pesquisa", JSON.stringify([]));
-                        window.location.reload();
+                        window.location.assign("Pesquisa.html");
                     }
                 }
                 requisicao.send();
