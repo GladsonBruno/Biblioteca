@@ -23,16 +23,16 @@ namespace Biblioteca.Controllers
         }
 
         // GET: Livro?parametro=valor&nomeParametro=nome_do_parametro
-        public Livro Get(string parametro, string nomeParametro)
+        public List<Livro> Get(string parametro, string nomeParametro)
         {
             LivroViewModel livro = new LivroViewModel();
-            Livro livroSelecionado;
+            List<Livro> livroSelecionado;
             
 
             //Pesquisa por isbn
             if (nomeParametro == "ISBN")
             {
-                livroSelecionado = livro.Livros.Where(p => p.ISBN == parametro).FirstOrDefault();
+                livroSelecionado = livro.Livros.Where(p => p.ISBN == parametro).ToList();
                 if (livroSelecionado == null)
                 {
                     throw new Exception("Nenhum livro encontrado");
@@ -42,7 +42,7 @@ namespace Biblioteca.Controllers
             else if(nomeParametro == "Autores")
             {
 
-                livroSelecionado = livro.Livros.Where(p => p.Autores.Contains(parametro)).FirstOrDefault();
+                livroSelecionado = livro.Livros.Where(p => p.Autores.Contains(parametro)).ToList();
                 
                 
                 if (livroSelecionado == null)

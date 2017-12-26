@@ -45,40 +45,35 @@
 
     <script>
 
-        var requisicao = new XMLHttpRequest();
-        requisicao.open("GET", "http://localhost:55219/livro", true);
-        requisicao.onload = function () {
-            var resposta = JSON.parse(this.responseText);
+        function carregarPesquisa() {
+            var pesquisa = JSON.parse(localStorage.getItem("Pesquisa"));
 
-            var elementos = "";
-            var elementoAtual;
-            for (var item in resposta) {
-                elementoAtual = resposta[item];
-                /*
-                elementos += "<tr><td>" + resposta[item].ISBN + "</td><td>" + resposta[item].Titulo + "</td><td>" + resposta[item].Autores + "</td><td>" + resposta[item].Editora + "</td><td>" + resposta[item].Data_Publicacao + "</td><td>" + resposta[item].Preco_Extenso + "</td><td>";
-                for (var comentario in elementoAtual.Critica_de_Leitores) {
-                    elementos += "<td>" + elementoAtual.Critica_de_Leitores[comentario].Comentario + "</td>";
-                }
-                */
-                elementos += "<div class='col-md-3 col-sm-4 col-6' style='float: left'>";
-                elementos += "<div class='card' style= 'width:100%; height:auto' >";
-                elementos += "<img class='card-img-top' src='" + resposta[item].Image + "' alt='Card image'>";
-                elementos += "<div class='card-body col-md-12'>";
-                elementos += "<h4 class='card-title'>" + resposta[item].Titulo + "</h4>";
-                elementos += "<p class='card-text'>" + resposta[item].Autores + "</p>";
-                elementos += "<button class='btn btn-primary' onclick='pegarLivro(" + JSON.stringify(elementoAtual) + ")' style='cursor: pointer'> Ver Livro</button> ";
-                elementos += "</div>";
-                elementos += "</div>";
-                elementos += "</div>";
+            if (pesquisa.length > 0) {
+                var elementos = "";
 
-                //elementos += "<img src=" + resposta[item].Image + "/><br/>"
+                    for (var item in pesquisa) {
+                        elementoAtual = pesquisa[item];
+
+                        elementos += "<div class='col-md-3 col-sm-4 col-6' style='float: left'>";
+                        elementos += "<div class='card' style= 'width:100%; height:auto' >";
+                        elementos += "<img class='card-img-top' src='" + pesquisa[item].Image + "' alt='Card image'>";
+                        elementos += "<div class='card-body col-md-12'>";
+                        elementos += "<h4 class='card-title'>" + pesquisa[item].Titulo + "</h4>";
+                        elementos += "<p class='card-text'>" + pesquisa[item].Autores + "</p>";
+                        elementos += "<button class='btn btn-primary' onclick='pegarLivro(" + JSON.stringify(elementoAtual) + ")' style='cursor: pointer'> Ver Livro</button> ";
+                        elementos += "</div>";
+                        elementos += "</div>";
+                        elementos += "</div>";
+                    }
+
+                
+                $(".content").append(elementos);
+            } else {
+                $(".content").append("<div class='alert alert-danger'>Nenhum livro encontrado</div>");
             }
 
-            //$(".tblLivros").append(elementos);
-            $(".content").append(elementos);
+            
         }
-        requisicao.send();
-
 
         function pegarLivro(livro) {
             localStorage.setItem("Livro", JSON.stringify(livro));
@@ -102,11 +97,13 @@
                     window.location.assign("Pesquisa.html");
                 } else {
                     localStorage.setItem("Pesquisa", JSON.stringify([]));
-                    window.location.assign("Pesquisa.html");
+                    window.location.reload();
                 }
             }
             requisicao.send();
         }
+
+        carregarPesquisa();
     </script>
 
 </body>

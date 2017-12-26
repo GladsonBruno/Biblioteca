@@ -1,14 +1,39 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="utf-8">
+    <!-- Bootstrap 4 CSS -->
     <link rel="stylesheet" type="text/css" href="Content/bootstrap.min.css" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <script src="/scripts/jquery.min.js"></script>
+    <!-- Bootstrap 4 CSS -->
     <script src="scripts/bootstrap.min.js"></script>
-    <title class="titulo"></title>
+
+    <!-- Bootstrap 3 CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Bootstrap 3 JS -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <title>Home</title>
 </head>
 <body>
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <a href="Index.html" class="navbar-brand">Home</a>
+            <a href="CadastrarLivro.html" class="navbar-brand">Cadastrar Livro</a>
+            <div class="navbar-header">
+                <select class="form-control" style="height: auto" id="opcao_pesquisa">
+                    <option value="Autores">Autor</option>
+                    <option value="ISBN">ISBN</option>
+                </select>
+                <input type="text" class="form-control" id="texto_pesquisa" placeholder="Pesquisar" />
+                <button class="btn btn-success" type="submit" style="margin-top: -17%; float: right;" onclick="pesquisar()">
+                    <i class="glyphicon glyphicon-search"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+    
     <div class="container">
         <div class="card">
             <h3 class="card-header"></h3>
@@ -78,7 +103,7 @@
     </div>
 
     <!-- Fim modal deleção confirmada -->
-    
+
     <script>
         var livro = JSON.parse(localStorage.getItem("Livro"));
 
@@ -117,11 +142,32 @@
                 }
             }
             requisicao.send();
-            
+
         }
 
         function carregarDadosModal() {
             $(".tituloLivroDelete").append("</br>" + livro.Titulo + " ");
+        }
+
+        function pesquisar() {
+            var texto = $("#texto_pesquisa").val();
+            texto = texto.replace(" ", "%20");
+            var opcao_pesquisa = $("#opcao_pesquisa").val();
+
+            var requisicao = new XMLHttpRequest();
+            requisicao.open("GET", "http://localhost:55219/livro?parametro=" + texto + "&nomeParametro=" + opcao_pesquisa, true);
+            requisicao.setRequestHeader("content-type", "application/json");
+            requisicao.onload = function () {
+                var resposta = JSON.parse(this.responseText);
+                if (resposta.length > 0) {
+                    localStorage.setItem("Pesquisa", JSON.stringify(resposta));
+                    window.location.assign("Pesquisa.html");
+                } else {
+                    localStorage.setItem("Pesquisa", JSON.stringify([]));
+                    window.location.assign("Pesquisa.html");
+                }
+            }
+            requisicao.send();
         }
 
         carregarDados();
