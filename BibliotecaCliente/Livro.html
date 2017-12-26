@@ -33,18 +33,21 @@
             </div>
         </div>
     </nav>
-    
+
     <div class="container">
         <div class="card">
             <h3 class="card-header"></h3>
             <div class="card-block">
-                <div class="col-md-4" style="float: right;">
+                <div class="imagem col-md-4" style="float: left"></div>
+                <div class="col-md-4">
                     <h4 class="card-title">Critica Leitores</h4>
                     <p class="card-text" id="criticas"></p>
-
+                    <textarea class="form-control" maxlength="200" placeholder="Digite um Comentario" id="novoComentario"></textarea>
+                    <br />
+                    <button class="btn btn-primary" onclick="comentar()">Comentar</button>
                 </div>
 
-                <div class="col-md-4" style="float: right">
+                <div class="col-md-4">
                     <h4 class="card-title">Autores</h4>
                     <p class="card-text" id="autores"></p>
                     <h4 class="card-title">Editora</h4>
@@ -56,7 +59,7 @@
                 </div>
 
 
-                <div class="imagem col-4"></div>
+
 
                 </br>
                 <a href="Editar.html" class="btn btn-primary">Editar</a>
@@ -104,6 +107,26 @@
 
     <!-- Fim modal deleção confirmada -->
 
+
+    <!-- Início modal deleção de comentario -->
+    <div id="modalDeletarComentario" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <!-- Conteudo Modal -->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Deseja excluir este Comentario?</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" data-toggle="modal" onclick="excluir_comentario()">Sim</button>
+                    <button type="button" class="btn btn-info" data-toggle="modal" data-dismiss="modal">Não</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Fim modal deleção de comentario -->
+
     <script>
         var livro = JSON.parse(localStorage.getItem("Livro"));
 
@@ -119,14 +142,121 @@
 
             var comentarios = "";
 
-
             for (var item in livro.Critica_de_Leitores) {
 
                 comentarios += "<div class='alert alert-info' role= 'alert' >"
-                comentarios += "<span class='alert-link'>" + livro.Critica_de_Leitores[item].Comentario + "</span>"
+                comentarios += "<span class='alert-link'>" + livro.Critica_de_Leitores[item].Comentario + "</span><button class='btn-info' style='float: right;' onclick='confirmar_exclusao(" + item + ")'>&times;</button>"
                 comentarios += "</div>"
+                console.log(item)
             }
             $("#criticas").append(comentarios);
+        }
+
+        function comentar() {
+            var NovoComentario = $("#novoComentario").val();
+
+            var urlImagem = $("#imagem").val();
+            var isbn = $("#isbn").val();
+            var titulo = $("#tituloLivro").val();
+            var autores = $("#autores").val();
+            var editora = $("#editora").val();
+            var data_publicacao = $("#data_publicacao").val();
+            var preco = $("#preco").val();
+            var comentario = $("#comentario").val();
+
+            if (NovoComentario != "") {
+                if (livro.Critica_de_Leitores == null) {
+                    livro.Critica_de_Leitores = [];
+                }
+                livro.Critica_de_Leitores.push({ "Comentario": NovoComentario });
+
+                var modificacoesLivro = {
+                    "Id": livro.Id,
+                    "ISBN": livro.ISBN,
+                    "Titulo": livro.Titulo,
+                    "Autores": livro.Autores,
+                    "Editora": livro.Editora,
+                    "Data_Publicacao": livro.Data_Publicacao,
+                    "Preco": livro.Preco,
+                    "Critica_de_Leitores": livro.Critica_de_Leitores,
+                    "Image": livro.Image
+                };
+
+                var requisicao = new XMLHttpRequest();
+                requisicao.open("PUT", "http://localhost:55219/livro/" + livro.Id, true);
+                requisicao.setRequestHeader("content-type", "application/json");
+                requisicao.onload = function () {
+                    livro.Critica_de_Leitores.push({ "Comentario": comentario });
+                }
+                requisicao.onreadystatechange = function () {
+                    if (this.status == 200) {
+                        localStorage.setItem("Livro", JSON.stringify(modificacoesLivro));
+                        window.location.reload();
+                    } else {
+                        alert("Falha ao comenta o livro " + livro.Titulo + " !");
+                        alert(this.status);
+                        alert(this.readyState);
+                    }
+
+                }
+                $('#livroAtualizado').append("Livro <br/>" + titulo + "</br> Atualizado com sucesso!");
+                requisicao.send(JSON.stringify(modificacoesLivro));
+            }
+
+        }
+
+        function confirmar_exclusao(index) {
+            localStorage.setItem("index_comentario", index);
+            $("#modalDeletarComentario").modal("show");
+        }
+
+        function excluir_comentario() {
+            var index_comentario = localStorage.getItem("index_comentario");
+
+            var urlImagem = $("#imagem").val();
+            var isbn = $("#isbn").val();
+            var titulo = $("#tituloLivro").val();
+            var autores = $("#autores").val();
+            var editora = $("#editora").val();
+            var data_publicacao = $("#data_publicacao").val();
+            var preco = $("#preco").val();
+            var comentario = $("#comentario").val();
+
+
+            livro.Critica_de_Leitores.splice(index_comentario, 1);
+
+
+                var modificacoesLivro = {
+                    "Id": livro.Id,
+                    "ISBN": livro.ISBN,
+                    "Titulo": livro.Titulo,
+                    "Autores": livro.Autores,
+                    "Editora": livro.Editora,
+                    "Data_Publicacao": livro.Data_Publicacao,
+                    "Preco": livro.Preco,
+                    "Critica_de_Leitores": livro.Critica_de_Leitores,
+                    "Image": livro.Image
+                };
+
+                var requisicao = new XMLHttpRequest();
+                requisicao.open("PUT", "http://localhost:55219/livro/" + livro.Id, true);
+                requisicao.setRequestHeader("content-type", "application/json");
+                requisicao.onload = function () {
+                    livro.Critica_de_Leitores.push({ "Comentario": comentario });
+                }
+                requisicao.onreadystatechange = function () {
+                    if (this.status == 200) {
+                        localStorage.setItem("Livro", JSON.stringify(modificacoesLivro));
+                        window.location.reload();
+                    } else {
+                        alert("Falha ao excluir comentario do livro " + livro.Titulo + " !");
+                        alert(this.status);
+                        alert(this.readyState);
+                    }
+
+                }
+                $('#livroAtualizado').append("Livro <br/>" + titulo + "</br> Atualizado com sucesso!");
+                requisicao.send(JSON.stringify(modificacoesLivro));
         }
 
         function deletar() {

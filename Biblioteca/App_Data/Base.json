@@ -33,6 +33,9 @@
       },
       {
         "Comentario": "Muito Bom"
+      },
+      {
+        "Comentario": "Épico"
       }
     ],
     "Image": "https://images.livrariasaraiva.com.br/imagemnet/imagem.aspx/?pro_id=3418878&qld=90&l=430&a=-1"
@@ -52,6 +55,9 @@
       },
       {
         "Comentario": "Muito Bom"
+      },
+      {
+        "Comentario": "Perfeito"
       }
     ],
     "Image": "https://images.livrariasaraiva.com.br/imagemnet/imagem.aspx/?pro_id=7340626&qld=90&l=430&a=-1"
@@ -102,8 +108,12 @@
     "Editora": "Rocco",
     "Data_Publicacao": "21/10/1996",
     "Preco": 24.9,
-    "Preco_Extenso": "VINTE E QUATRO REAIS E NOVENTA CENTAVOS",
-    "Critica_de_Leitores": null,
+    "Preco_Extenso": null,
+    "Critica_de_Leitores": [
+      {
+        "Comentario": "Amo esse mundo mágico da mestra JK Rowling"
+      }
+    ],
     "Image": "https://images.livrariasaraiva.com.br/imagemnet/imagem.aspx/?pro_id=443852&qld=90&l=430&a=-1"
   },
   {
@@ -113,9 +123,13 @@
     "Autores": "Phillip Pullman",
     "Editora": "Objetiva",
     "Data_Publicacao": "01/05/2007",
-    "Preco": 34.90,
+    "Preco": 34.9,
     "Preco_Extenso": "TRINTA E QUATRO REAIS E NOVENTA CENTAVOS",
-    "Critica_de_Leitores": null,
+    "Critica_de_Leitores": [
+      {
+        "Comentario": "teste"
+      }
+    ],
     "Image": "https://images.livrariasaraiva.com.br/imagemnet/imagem.aspx/?pro_id=1914939&qld=90&l=430&a=-1"
   },
   {
@@ -125,9 +139,16 @@
     "Autores": "Andy Smith - Jim Starlin - Ron Lim",
     "Editora": "Panini",
     "Data_Publicacao": "21/12/2017",
-    "Preco": 20.20,
+    "Preco": 20.2,
     "Preco_Extenso": "VINTE REAIS E VINTE CENTAVOS",
-    "Critica_de_Leitores": null,
+    "Critica_de_Leitores": [
+      {
+        "Comentario": "Mesmo"
+      },
+      {
+        "Comentario": "Thanos"
+      }
+    ],
     "Image": "https://images.livrariasaraiva.com.br/imagemnet/imagem.aspx/?pro_id=9915998&qld=90&l=430&a=-1"
   }
 ]
