@@ -96,8 +96,8 @@ namespace Biblioteca.Models
             }
         }
 
-        private decimal _preco;
-        public decimal Preco
+        private double _preco;
+        public double Preco
         {
             get { return _preco; }
 
@@ -157,7 +157,7 @@ namespace Biblioteca.Models
             }
         }
 
-        public Livro(string isbn, string titulo, string autores, string editora, string data_publicacao, decimal preco)
+        public Livro(string isbn, string titulo, string autores, string editora, string data_publicacao, double preco)
         {
             ISBN = isbn;
             Titulo = titulo;

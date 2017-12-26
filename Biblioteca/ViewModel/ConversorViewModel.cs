@@ -9,7 +9,7 @@ namespace Biblioteca.ViewModel
     public class ConversorViewModel
     {
         // O método EscreverExtenso recebe um valor do tipo decimal
-        public static string EscreverExtenso(decimal valor)
+        public static string EscreverExtenso(double valor)
         {
             if (valor <= 0 | valor >= 1000000000000000)
                 return "Valor não suportado pelo sistema.";
