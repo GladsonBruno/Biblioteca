@@ -36,7 +36,7 @@
 
     <div class="container">
         <div class="card">
-            <h3 class="card-header">Cadastrar Livro</h3>
+            <h3 class="card-header"><a href='index.html'><span class='glyphicon glyphicon-circle-arrow-left'></span></a>Cadastrar Livro</h3>
             <div class="card-block">
                 <div class="col-md-4">
                     <h4 class="card-title">URL da Imagem</h4>
@@ -77,7 +77,26 @@
         </div>
     </div>
 
-    <!-- Fim modal atualização cadastro -->
+    <!-- Fim modal  cadastro -->
+
+    <!-- Início modal erro cadastro -->
+    <div id="modalErroCadastro" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <!-- Conteudo Modal -->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4>Erro</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body"></div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success btn-block" data-dismiss="modal">Voltar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Fim modal erro cadastro -->
 
     <script>
 
@@ -89,35 +108,73 @@
             var editora = $("#editora").val();
             var data_publicacao = $("#data_publicacao").val();
             var preco = $("#preco").val();
-            preco = preco.replace(",", ".");
+            var erro = "";
 
-            data_publicacao = data_publicacao.substring(8, 12) + "/" + data_publicacao.substring(5, 7) + "/" + data_publicacao.substring(0, 4);
-
-            var novoLivro = {
-                "ISBN": isbn,
-                "Titulo": titulo,
-                "Autores": autores,
-                "Editora": editora,
-                "Data_Publicacao": data_publicacao,
-                "Preco": preco,
-                "Critica_de_Leitores": "",
-                "Image": urlImagem
-            };
-
-            var requisicao = new XMLHttpRequest();
-            requisicao.open("POST", "http://localhost:55219/livro", true);
-            requisicao.setRequestHeader("content-type", "application/json");
-            requisicao.onreadystatechange = function () {
-                if (this.status == 200) {
-                    $('#modalCadastro').modal('show');
-                } else {
-                    alert("Falha ao cadastrar o livro " + livro.Titulo + " !");
-                    alert(this.status);
-                    alert(this.readyState);
-                }
+            if (urlImagem == "") {
+                erro += "Preencha o campo URL Imagem</br>";
             }
-            $("#novoLivro").append("Livro </br>" + titulo + "</br> Cadastrado com sucesso!");
-            requisicao.send(JSON.stringify(novoLivro));
+
+            if (isbn == "") {
+                erro += "Preencha o campo ISBN</br>";
+            }
+
+            if (titulo == "") {
+                erro += "Preencha o campo Titulo</br>";
+            }
+
+            if (autores == "") {
+                erro += "Preencha o campo Autores</br>";
+            }
+
+            if (editora == "") {
+                erro += "Preencha o campo Editora</br>";
+            }
+
+            if (data_publicacao == "") {
+                erro += "Preencha o campo Data de Publicação</br>";
+            }
+
+            if (preco == "") {
+                erro += "Preencha ao campo Preço</br>";
+            }
+
+            if (erro == "") {
+                preco = preco.replace(",", ".");
+
+                data_publicacao = data_publicacao.substring(8, 12) + "/" + data_publicacao.substring(5, 7) + "/" + data_publicacao.substring(0, 4);
+
+                var novoLivro = {
+                    "ISBN": isbn,
+                    "Titulo": titulo,
+                    "Autores": autores,
+                    "Editora": editora,
+                    "Data_Publicacao": data_publicacao,
+                    "Preco": preco,
+                    "Critica_de_Leitores": "",
+                    "Image": urlImagem
+                };
+
+                var requisicao = new XMLHttpRequest();
+                requisicao.open("POST", "http://localhost:55219/livro", true);
+                requisicao.setRequestHeader("content-type", "application/json");
+                requisicao.onreadystatechange = function () {
+                    if (this.status == 200) {
+                        $('#modalCadastro').modal('show');
+                    } else {
+                        alert("Falha ao cadastrar o livro " + livro.Titulo + " !");
+                        alert(this.status);
+                        alert(this.readyState);
+                    }
+                }
+                $("#novoLivro").append("Livro </br>" + titulo + "</br> Cadastrado com sucesso!");
+                requisicao.send(JSON.stringify(novoLivro));
+            } else {
+                $("#modalErroCadastro").modal("show");
+                $(".modal-body").html('');
+                $(".modal-body").append(erro);
+            }
+
+
 
         }
 
@@ -127,20 +184,22 @@
             texto = texto.replace(" ", "%20");
             var opcao_pesquisa = $("#opcao_pesquisa").val();
 
-            var requisicao = new XMLHttpRequest();
-            requisicao.open("GET", "http://localhost:55219/livro?parametro=" + texto + "&nomeParametro=" + opcao_pesquisa, true);
-            requisicao.setRequestHeader("content-type", "application/json");
-            requisicao.onload = function () {
-                var resposta = JSON.parse(this.responseText);
-                if (resposta.length > 0) {
-                    localStorage.setItem("Pesquisa", JSON.stringify(resposta));
-                    window.location.assign("Pesquisa.html");
-                } else {
-                    localStorage.setItem("Pesquisa", JSON.stringify([]));
-                    window.location.assign("Pesquisa.html");
+            if (texto != "" || texto == null) {
+                var requisicao = new XMLHttpRequest();
+                requisicao.open("GET", "http://localhost:55219/livro?parametro=" + texto + "&nomeParametro=" + opcao_pesquisa, true);
+                requisicao.setRequestHeader("content-type", "application/json");
+                requisicao.onload = function () {
+                    var resposta = JSON.parse(this.responseText);
+                    if (resposta.length > 0) {
+                        localStorage.setItem("Pesquisa", JSON.stringify(resposta));
+                        window.location.assign("Pesquisa.html");
+                    } else {
+                        localStorage.setItem("Pesquisa", JSON.stringify([]));
+                        window.location.reload();
+                    }
                 }
+                requisicao.send();
             }
-            requisicao.send();
         }
 
     </script>
