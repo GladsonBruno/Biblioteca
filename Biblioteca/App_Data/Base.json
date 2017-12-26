@@ -108,7 +108,7 @@
     "Editora": "Rocco",
     "Data_Publicacao": "21/10/1996",
     "Preco": 24.9,
-    "Preco_Extenso": null,
+    "Preco_Extenso": "VINTE E QUATRO REAIS E NOVENTA CENTAVOS",
     "Critica_de_Leitores": [
       {
         "Comentario": "Amo esse mundo mágico da mestra JK Rowling"
@@ -150,5 +150,17 @@
       }
     ],
     "Image": "https://images.livrariasaraiva.com.br/imagemnet/imagem.aspx/?pro_id=9915998&qld=90&l=430&a=-1"
+  },
+  {
+    "Id": 9,
+    "ISBN": "9788563219077",
+    "Titulo": "A Ultima Música",
+    "Autores": "Nicholas Sparks",
+    "Editora": "Novo Conceito",
+    "Data_Publicacao": "01/01/2010",
+    "Preco": 19.9,
+    "Preco_Extenso": null,
+    "Critica_de_Leitores": [],
+    "Image": "https://images.livrariasaraiva.com.br/imagemnet/imagem.aspx/?pro_id=3043846&qld=90&l=430&a=-1"
   }
 ]

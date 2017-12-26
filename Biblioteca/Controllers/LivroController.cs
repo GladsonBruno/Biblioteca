@@ -41,8 +41,8 @@ namespace Biblioteca.Controllers
             //Pesquisa pelo autor
             else if(nomeParametro == "Autores")
             {
-
-                livroSelecionado = livro.Livros.Where(p => p.Autores.Contains(parametro)).ToList();
+                parametro = parametro.ToUpper();
+                livroSelecionado = livro.Livros.Where(p => p.Autores.ToUpper().Contains(parametro)).ToList();
                 
                 
                 if (livroSelecionado == null)
